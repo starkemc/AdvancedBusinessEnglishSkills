@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dx="http://schemas.devexpress.com/maui"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="true"
+             Title="Advanced Business English"   
+             x:Class="AdvancedBusinessEnglishSkills.MainPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <CollectionView Grid.Row="0" 
+                        x:Name="collectionMenu"  
+                        SelectionMode="Single" 
+                        SelectionChanged="OnCollectionViewSelectionChanged">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <ContentView>
+                        <StackLayout>
+                            <Grid Padding="10, 8, 18, 7">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Margin="0" Padding="0" ColumnSpacing="0" RowSpacing="0">
+                                    <dx:DXImage Source="{Binding Image}" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="48" HeightRequest="48">
+                                    </dx:DXImage>
+                                </Grid>
+                                <dx:DXStackLayout Grid.Column="1" Padding="18,1,18,7" Orientation="Vertical">
+                                    <Label Text="{Binding Name}"  Margin="0,10" TextDecorations="Underline" FontSize="Header"  FontAttributes="Bold"  TextColor="{dx:ThemeColor OnSurface}"/>
+                                    <Label Text="{Binding Description}" TextColor="{dx:ThemeColor OnSurfaceVariant}" FontSize="Caption"/>
+                                </dx:DXStackLayout>
+                            </Grid>
+                            <BoxView HeightRequest=".4" Color="LightGray" Margin="0" />
+
+                        </StackLayout>
+
+                    </ContentView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
+    </Grid>
+</ContentPage>
