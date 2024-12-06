@@ -29,4 +29,13 @@ public class DBContext
     }
 
     #endregion
+
+    #region Listen
+    
+    public async Task<List<Models.Listen>> Listen_GetByMenuId(int id)
+    {
+        return await _database.Table<Models.Listen>().Where(d => d.MenuId == id).ToListAsync();
+    }
+
+    #endregion
 }

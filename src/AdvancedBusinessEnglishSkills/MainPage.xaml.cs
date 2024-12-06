@@ -6,8 +6,6 @@ namespace AdvancedBusinessEnglishSkills;
 
 public partial class MainPage : ContentPage
 {
-   // private readonly NavigationParameterService _navigationParameterService;
-
     public ObservableCollection<Menu> MenuItems = new();
 
     DBContext _database;
@@ -17,7 +15,6 @@ public partial class MainPage : ContentPage
         InitializeComponent();
 
         _database = new DBContext();
-        //_navigationParameterService = navigationParameterService;
     }
 
     protected override async void OnAppearing()
