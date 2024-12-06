@@ -16,6 +16,8 @@ public class DBContext
         _database.CreateTableAsync<Menu>();
     }
 
+    #region Menu
+
     public async Task<List<Menu>> Menu_GetAllAsync()
     {
         return await _database.Table<Menu>().ToListAsync();
@@ -25,4 +27,6 @@ public class DBContext
     {
         return await _database.Table<Menu>().Where(i => i.Id == id).FirstOrDefaultAsync();
     }
+
+    #endregion
 }

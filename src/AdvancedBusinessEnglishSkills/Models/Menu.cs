@@ -10,4 +10,6 @@ public class Menu
     public string Name { get; set; }
     public string Description { get; set; }
     public string Icon { get; set; }
+    public ImageSource Image { get; set; }
+   
 }

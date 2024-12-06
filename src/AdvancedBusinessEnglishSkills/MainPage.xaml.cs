@@ -13,7 +13,7 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
-
+            
         _database = new DBContext();
     }
 
@@ -23,7 +23,9 @@ public partial class MainPage : ContentPage
 
         var menu = await _database.Menu_GetAllAsync();
 
-        menu.ForEach(item => { 
+        menu.ForEach(item => {
+
+            item.Image = item.Icon;
             MenuItems.Add(item);
         });
 
