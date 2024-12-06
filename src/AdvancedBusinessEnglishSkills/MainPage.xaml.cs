@@ -6,6 +6,8 @@ namespace AdvancedBusinessEnglishSkills;
 
 public partial class MainPage : ContentPage
 {
+   // private readonly NavigationParameterService _navigationParameterService;
+
     public ObservableCollection<Menu> MenuItems = new();
 
     DBContext _database;
@@ -13,13 +15,16 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
-            
+
         _database = new DBContext();
+        //_navigationParameterService = navigationParameterService;
     }
 
     protected override async void OnAppearing()
     {
         base.OnAppearing();
+
+        MenuItems.Clear();
 
         var menu = await _database.Menu_GetAllAsync();
 
@@ -34,11 +39,8 @@ public partial class MainPage : ContentPage
 
     public async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        ////selected menu item
-        //var menuItem = (e.CurrentSelection.FirstOrDefault() as MenuItem);
-
-        //var data = Data.Where(d => d.id == menuItem.Id.ToString()).FirstOrDefault();
-
-        //await Navigation.PushAsync(new DetailPage(data));
+        var menuItem = (e.CurrentSelection.FirstOrDefault() as Models.Menu);
+       
+        await Navigation.PushAsync(new DetailPage(menuItem.Id));
     }
 }

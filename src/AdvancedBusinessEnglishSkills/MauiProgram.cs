@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using DevExpress.Maui;
+using AdvancedBusinessEnglishSkills.Models;
 
 namespace AdvancedBusinessEnglishSkills;
 
@@ -28,7 +29,7 @@ public static class MauiProgram
     DevExpress.Maui.CollectionView.Initializer.Init();
     DevExpress.Maui.Controls.Initializer.Init();
 
-    return builder.Build();
+        return builder.Build();
     }
 }
 

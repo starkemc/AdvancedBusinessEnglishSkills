@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dx="http://schemas.devexpress.com/maui"
+             x:Class="AdvancedBusinessEnglishSkills.DetailPage"
+             xmlns:custom="clr-namespace:AdvancedBusinessEnglishSkills"
+             Title="Advanced Business English">
+    <dx:TabView>
+        <dx:TabViewItem HeaderText="Listening">
+            <custom:Listen x:Name="listen" ></custom:Listen>
+        </dx:TabViewItem>
+        <dx:TabViewItem HeaderText="Testing">
+
+        </dx:TabViewItem>
+        <dx:TabViewItem HeaderText="Phrasing">
+
+        </dx:TabViewItem>
+        <dx:TabViewItem HeaderText="Practicing">
+
+        </dx:TabViewItem>
+    </dx:TabView>
+</ContentPage>
