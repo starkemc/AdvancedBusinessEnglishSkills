@@ -47,4 +47,23 @@ public class DBContext
     }
 
     #endregion
+
+    #region Questions
+
+    public async Task<List<Models.Question>> Question_GetByMenuId(int id)
+    {
+        return await _database.Table<Models.Question>().Where(d => d.MenuId == id).ToListAsync();
+    }
+
+    #endregion
+
+    #region Answers
+
+    public async Task<List<Models.Answer>> Answers_GetByMenuId(int id)
+    {
+        return await _database.Table<Models.Answer>().Where(d => d.MenuId == id).ToListAsync();
+    }
+
+
+    #endregion
 }

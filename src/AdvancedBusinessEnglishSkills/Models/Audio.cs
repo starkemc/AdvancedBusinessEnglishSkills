@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SQLite;
+using System;
 
 namespace AdvancedBusinessEnglishSkills.Models;
 
 public class Audio
 {
+    [PrimaryKey]
     public int Id { get; set; }
     public int Menuid { get; set; }
     public int AudioTypeId { get; set; }

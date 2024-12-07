@@ -73,7 +73,7 @@
 	  <MauiXaml Update="Listen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Menu.xaml">
+	  <MauiXaml Update="Quiz.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

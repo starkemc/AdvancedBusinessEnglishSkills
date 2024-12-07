@@ -19,5 +19,8 @@ public partial class DetailPage : ContentPage
 
         var listenControl = this.FindByName("listen") as Listen;
         listenControl.MenuId = _menuId;
+
+        var quizControl = this.FindByName("quiz") as Quiz;
+        quizControl.MenuId = _menuId;
     }
 }

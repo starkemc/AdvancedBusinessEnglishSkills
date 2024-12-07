@@ -10,7 +10,7 @@
             <custom:Listen x:Name="listen" ></custom:Listen>
         </dx:TabViewItem>
         <dx:TabViewItem HeaderText="Testing">
-
+            <custom:Quiz x:Name="quiz"></custom:Quiz>
         </dx:TabViewItem>
         <dx:TabViewItem HeaderText="Phrasing">
 
