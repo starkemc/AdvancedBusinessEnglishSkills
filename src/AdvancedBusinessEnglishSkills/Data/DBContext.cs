@@ -38,4 +38,13 @@ public class DBContext
     }
 
     #endregion
+
+    #region Audio
+
+    public async Task<Models.Audio> Audio_GetListenByMenuId(int menuId)
+    {
+        return await _database.Table<Models.Audio>().Where(d => d.Menuid == menuId).FirstAsync();
+    }
+
+    #endregion
 }

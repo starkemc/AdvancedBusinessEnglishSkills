@@ -3,10 +3,103 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:media="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui.MediaElement"
              x:Class="AdvancedBusinessEnglishSkills.Listen">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid Margin="0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <CollectionView Grid.Row="0" x:Name="collectionView" VerticalScrollBarVisibility="Default">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0"
+                               Text="{Binding Name}"
+                               TextDecorations="Underline"
+                               FontSize="16"
+                               FontAttributes="Bold" />
+
+                        <Label Grid.Row="1"
+                           Grid.Column="1"
+                           FontSize="14"
+                           Text="{Binding Text}"	
+                           LineBreakMode="WordWrap"/>
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <StackLayout Grid.Row="1">
+            <BoxView HeightRequest=".6" Color="Blue" Margin="0" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="15"></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <HorizontalStackLayout Grid.Row="0" HorizontalOptions="End">
+                    <Label x:Name="AudioTicker" Grid.Row="0" Margin="10,0,0,0">00:00</Label>
+                    <Label  Margin="3,0,0,0">-</Label>
+                    <Label x:Name="AudioLength" Grid.Row="0" Margin="3,0,10,0"></Label>
+                </HorizontalStackLayout>
+
+                <Slider Grid.Row="1" 
+                x:Name="slider"
+                MinimumTrackColor="Grey"
+                DragStarted="slider_DragStarted"
+                DragCompleted="slider_DragCompleted"/>
+
+                <Grid Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition  Height="50"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <!--<ImageButton Grid.Row="0"
+                           Source="back5.png"
+                           Margin="20,10,10,5"
+                           HorizontalOptions="StartAndExpand">                               
+              </ImageButton>-->
+
+                    <ImageButton Grid.Row="0" 
+                       x:Name="Play"
+                       HorizontalOptions="Center"
+                       Clicked="ImageButton_Clicked"
+                       Source="play.png">
+                    </ImageButton>
+                    <ImageButton Grid.Row="0" 
+                       x:Name="Pause"
+                       IsVisible="False"
+                       HorizontalOptions="Center"
+                       Clicked="Pause_Clicked"
+                       Source="pause.png">
+                    </ImageButton>
+
+                </Grid>
+
+            </Grid>
+
+            <media:MediaElement
+         WidthRequest="400" 
+         IsVisible="False"
+         x:Name="mediaPlayer"
+         PositionChanged="MediaElement_PositionChanged"
+         HeightRequest="200"                
+         ShouldAutoPlay="False"
+         ShouldShowPlaybackControls="True" />
+
+        </StackLayout>
+
+    </Grid>
 </ContentView>

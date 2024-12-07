@@ -78,4 +78,8 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Resources\Raw\BusinessEnglish\" />
+	</ItemGroup>
+
 </Project>
