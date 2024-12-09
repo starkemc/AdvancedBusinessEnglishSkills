@@ -21,38 +21,37 @@ public class QuizViewModel : BaseViewModel
     bool showCorrect;
     bool showIncorrect;
 
-    public Command<string> ItemTapped { get; }
-    public Command<string> NextQuestion { get; set; }
 
-    public QuizViewModel(int menuId)
+    public QuizViewModel()
     {
-        _menuId = menuId;
-
-        ItemTapped = new Command<string>(OnItemSelected);
-        NextQuestion = new Command<string>(OnNextQuestion);
+        ItemTapped = new Command<int>(OnItemSelected);
+        NextQuestion = new Command<int>(OnNextQuestion);
 
         showCorrect = false;
         showIncorrect = false;
     }
 
-    void OnItemSelected(string id)
+    public Command<int> ItemTapped { get; }
+    public Command<int> NextQuestion { get; set; }
+
+    void OnItemSelected(int id)
     {
         //get current question
-        //var question = Data[0] as Models.Question;
+        var answer = Data[0].Answers.FirstOrDefault(a => a.Id == id);
 
-        //if (id.Equals(question.CorrectId))
-        //{
-        //    ShowCorrect = true;
-        //    ShowIncorrect = false;
-        //}
-        //else
-        //{
-        //    ShowIncorrect = true;
-        //    ShowCorrect = false;
-        //}
+        if (answer != null && answer.IsCorrect == 1)
+        {
+            ShowCorrect = true;
+            ShowIncorrect = false;
+        }
+        else
+        {
+            ShowIncorrect = true;
+            ShowCorrect = false;
+        }
     }
 
-    void OnNextQuestion(string questionId)
+    void OnNextQuestion(int questionId)
     {
         Data.Clear();
 
@@ -86,10 +85,10 @@ public class QuizViewModel : BaseViewModel
         set => SetProperty(ref this.showIncorrect, value);
     }
 
-    public async Task LoadData()
+    public async Task LoadData(int menuId)
     {
-        _questions = await _dbContext.Question_GetByMenuId(_menuId);
-        var answers = await _dbContext.Answers_GetByMenuId(_menuId);
+        _questions = await _dbContext.Question_GetByMenuId(menuId);
+        var answers = await _dbContext.Answers_GetByMenuId(menuId);
 
         _questions.ForEach(question => 
         {
@@ -98,5 +97,8 @@ public class QuizViewModel : BaseViewModel
 
         //set the first question
         Data.Add(_questions[0]);
+
     }
+
+
 }
