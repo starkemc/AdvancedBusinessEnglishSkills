@@ -13,7 +13,7 @@
             <custom:Quiz x:Name="quiz"></custom:Quiz>
         </dx:TabViewItem>
         <dx:TabViewItem HeaderText="Phrasing">
-
+            <custom:Phrasing x:Name="phrasing"/>
         </dx:TabViewItem>
         <dx:TabViewItem HeaderText="Practicing">
             <custom:Practice x:Name="practice"/>

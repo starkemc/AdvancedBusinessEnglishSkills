@@ -1,5 +1,4 @@
 using AdvancedBusinessEnglishSkills.Data;
-using Android.Support.CustomTabs;
 using CommunityToolkit.Maui.Views;
 using DevExpress.Data.Helpers;
 using System.Collections.ObjectModel;
@@ -64,6 +63,7 @@ public partial class Practice : ContentView
         var radioName2 = this.FindByName("RadioName2") as RadioButton;
         radioName2.Content = _practice[1].Name;
 
+        Data.Clear();
         _practice[0].Items.ForEach(item => { Data.Add(item); });
         collectionView.ItemsSource = Data;
 
@@ -164,9 +164,9 @@ public class PracticeRowStyle : DataTemplateSelector
         var boundPractice = item as Models.PracticeDetail;
 
         if (boundPractice.Enabled == 1)
-            return EvenRowTemplate;
+            return OddRowTemplate;
 
-        return OddRowTemplate;
+        return EvenRowTemplate;
 
         //return Convert.ToInt32(boundPractice.id) % 2 == 0 ? EvenRowTemplate : OddRowTemplate;
     }

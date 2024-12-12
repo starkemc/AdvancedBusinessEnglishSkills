@@ -85,6 +85,9 @@
 	  <MauiXaml Update="Listen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Phrasing.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Practice.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

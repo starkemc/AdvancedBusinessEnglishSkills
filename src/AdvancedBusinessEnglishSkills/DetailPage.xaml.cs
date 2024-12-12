@@ -25,5 +25,8 @@ public partial class DetailPage : ContentPage
 
         var practiceControl = this.FindByName("practice") as Practice;
         practiceControl.MenuId = _menuId;
+
+        var phrasingControl = this.FindByName("phrasing") as Phrasing;
+        phrasingControl.MenuId = _menuId;
     }
 }

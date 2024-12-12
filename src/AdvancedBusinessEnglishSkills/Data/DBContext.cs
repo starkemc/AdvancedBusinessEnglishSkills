@@ -43,7 +43,12 @@ public class DBContext
 
     public async Task<Models.Audio> Audio_GetListenByMenuId(int menuId)
     {
-        return await _database.Table<Models.Audio>().Where(d => d.Menuid == menuId).FirstAsync();
+        return await _database.Table<Models.Audio>().Where(d => d.Menuid == menuId && d.AudioTypeId == 1).FirstAsync();
+    }
+
+    public async Task<Models.Audio> Audio_GetPhrasingByMenuId(int menuId)
+    {
+        return await _database.Table<Models.Audio>().Where(d => d.Menuid == menuId && d.AudioTypeId == 2).FirstAsync();
     }
 
     #endregion
@@ -77,6 +82,15 @@ public class DBContext
     public async Task<List<Models.PracticeDetail>> PracticeDetail_GetByPracticeId(int id)
     {
         return await _database.Table<Models.PracticeDetail>().Where(d => d.PracticeId == id).ToListAsync();
+    }
+
+    #endregion
+
+    #region Phrasing
+
+    public async Task<List<Models.Phrasing>> Phrasing_GetByMenuId(int id)
+    {
+        return await _database.Table<Models.Phrasing>().Where(d => d.MenuId == id).ToListAsync();
     }
 
     #endregion
