@@ -16,7 +16,7 @@
 
         </dx:TabViewItem>
         <dx:TabViewItem HeaderText="Practicing">
-
+            <custom:Practice x:Name="practice"/>
         </dx:TabViewItem>
     </dx:TabView>
 </ContentPage>

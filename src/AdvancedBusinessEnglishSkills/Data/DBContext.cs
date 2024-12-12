@@ -66,4 +66,18 @@ public class DBContext
 
 
     #endregion
+
+    #region Practice
+
+    public async Task<List<Models.Practice>> Practice_GetByMenuId(int id)
+    {
+        return await _database.Table<Models.Practice>().Where(d => d.MenuId == id).ToListAsync();
+    }
+
+    public async Task<List<Models.PracticeDetail>> PracticeDetail_GetByPracticeId(int id)
+    {
+        return await _database.Table<Models.PracticeDetail>().Where(d => d.PracticeId == id).ToListAsync();
+    }
+
+    #endregion
 }

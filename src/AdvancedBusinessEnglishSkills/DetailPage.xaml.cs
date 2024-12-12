@@ -22,5 +22,8 @@ public partial class DetailPage : ContentPage
 
         var quizControl = this.FindByName("quiz") as Quiz;
         quizControl.MenuId = _menuId;
+
+        var practiceControl = this.FindByName("practice") as Practice;
+        practiceControl.MenuId = _menuId;
     }
 }
