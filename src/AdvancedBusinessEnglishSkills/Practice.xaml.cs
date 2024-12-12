@@ -17,7 +17,9 @@ public partial class Practice : ContentView
     public Practice()
 	{
 		InitializeComponent();
-	}
+
+        mediaPlayer.PropertyChanged += MediaPlayer_PropertyChanged;
+    }
 
     public int MenuId
     {
@@ -41,13 +43,19 @@ public partial class Practice : ContentView
     {
         _practice = await _dbContext.Practice_GetByMenuId(menuId);
 
-        _practice.ForEach(async item =>
+        //_practice.ForEach(async item =>
+        //{
+        //    var details = await _dbContext.PracticeDetail_GetByPracticeId(item.Id);
+
+        //    item.Items.AddRange(details);
+
+        //});
+
+        foreach (var item in _practice)
         {
             var details = await _dbContext.PracticeDetail_GetByPracticeId(item.Id);
-
             item.Items.AddRange(details);
-
-        });
+        }
 
         var radioName1 = this.FindByName("RadioName1") as RadioButton;
         radioName1.Content = _practice[0].Name;
@@ -56,8 +64,11 @@ public partial class Practice : ContentView
         var radioName2 = this.FindByName("RadioName2") as RadioButton;
         radioName2.Content = _practice[1].Name;
 
-        //set the first question
-        //Data.Add(_questions[0]);
+        _practice[0].Items.ForEach(item => { Data.Add(item); });
+        collectionView.ItemsSource = Data;
+
+        //set audiofile
+        mediaPlayer.Source = MediaSource.FromResource(_practice[0].Audio);       
 
     }
 
@@ -74,9 +85,10 @@ public partial class Practice : ContentView
 
             Data.Clear();
             practice.Items.ForEach(item => { Data.Add(item); });
+            collectionView.ItemsSource = Data;
 
-            collectionView.ItemsSource = Data;           
-
+            //set audiofile
+            mediaPlayer.Source = MediaSource.FromResource(practice.Audio);
         }
     }
 
