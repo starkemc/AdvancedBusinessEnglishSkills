@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using DevExpress.Maui;
 using AdvancedBusinessEnglishSkills.Models;
+using Syncfusion.Maui.Core.Hosting;
 
 namespace AdvancedBusinessEnglishSkills;
 
@@ -16,6 +17,7 @@ public static class MauiProgram
             .UseDevExpress(useLocalization: true)
             .UseDevExpressControls()
             .UseDevExpressCollectionView()
+             .ConfigureSyncfusionCore()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

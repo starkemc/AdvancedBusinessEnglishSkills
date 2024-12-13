@@ -10,37 +10,24 @@ public partial class Practice : ContentView
     DBContext _dbContext = new();
     private int _menuId;
     public ObservableCollection<Models.PracticeDetail> Data { get; set; } = new();
-
     private List<Models.Practice> _practice = new();
 
-    public Practice()
+    MediaState _mediaState;
+
+    public Practice(int menuId)
 	{
 		InitializeComponent();
+
+        _menuId = menuId;
+
+        _mediaState = MediaState.Stopped;
 
         mediaPlayer.PropertyChanged += MediaPlayer_PropertyChanged;
     }
 
-    public int MenuId
+    public async Task LoadDataAsync()
     {
-        set
-        {
-            _menuId = value;
-        }
-    }
-
-    protected override async void OnParentSet()
-    {
-        base.OnParentSet();
-
-        if (this.Parent != null) // The ContentView is now in the visual tree
-        {
-            await LoadData(_menuId);
-        }
-    }
-
-    public async Task LoadData(int menuId)
-    {
-        _practice = await _dbContext.Practice_GetByMenuId(menuId);
+        _practice = await _dbContext.Practice_GetByMenuId(_menuId);
 
         //_practice.ForEach(async item =>
         //{
@@ -94,6 +81,16 @@ public partial class Practice : ContentView
 
     #region Media Player
 
+    public void StopPlayer()
+    {
+        if (_mediaState == MediaState.Playing)
+        {
+            mediaPlayer.Pause();
+            Play.IsVisible = true;
+            Pause.IsVisible = false;
+        }
+    }
+
     private void MediaPlayer_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
         if (e.PropertyName == MediaElement.DurationProperty.PropertyName)
@@ -119,6 +116,7 @@ public partial class Practice : ContentView
         Play.IsVisible = false;
         Pause.IsVisible = true;
 
+        _mediaState = MediaState.Playing;
     }
 
     private void Pause_Clicked(object sender, EventArgs e)
@@ -127,6 +125,8 @@ public partial class Practice : ContentView
 
         Play.IsVisible = true;
         Pause.IsVisible = false;
+
+        _mediaState = MediaState.Paused;
     }
 
     private void slider_DragStarted(object sender, EventArgs e)
@@ -148,6 +148,11 @@ public partial class Practice : ContentView
     private string FormatTime(int minutes, int seconds)
     {
         return $"{minutes:D2}:{seconds:D2}";
+    }
+
+    private void mediaPlayer_MediaEnded(object sender, EventArgs e)
+    {
+        _mediaState = MediaState.Stopped;
     }
 
     #endregion

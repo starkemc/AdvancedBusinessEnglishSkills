@@ -7,25 +7,30 @@ namespace AdvancedBusinessEnglishSkills;
 public partial class Phrasing : ContentView
 {
     private DBContext _database = new();
+    MediaState _mediaState;
 
-    public Phrasing()
+    public Phrasing(int menuId)
 	{
 		InitializeComponent();
+
+        MenuId = menuId;
+
+        _mediaState = MediaState.Stopped;
 
         mediaPlayer.PropertyChanged += MediaPlayer_PropertyChanged;
     }
 
-    protected override async void OnParentSet()
-    {
-        base.OnParentSet();
+    //protected override async void OnParentSet()
+    //{
+    //    base.OnParentSet();
 
-        if (this.Parent != null) // The ContentView is now in the visual tree
-        {
-            await LoadDataAsync();
-        }
-    }
+    //    if (this.Parent != null) // The ContentView is now in the visual tree
+    //    {
+    //        await LoadDataAsync();
+    //    }
+    //}
 
-    private async Task LoadDataAsync()
+    public async Task LoadDataAsync()
     {
         //load the data from sqlite
         var items = await _database.Phrasing_GetByMenuId(MenuId);
@@ -41,6 +46,16 @@ public partial class Phrasing : ContentView
     public int MenuId { get; set; }
 
     #region Media Player
+
+    public void StopPlayer()
+    {
+        if (_mediaState == MediaState.Playing)
+        {
+            mediaPlayer.Pause();
+            Play.IsVisible = true;
+            Pause.IsVisible = false;
+        }
+    }
 
     private void MediaPlayer_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
@@ -67,6 +82,7 @@ public partial class Phrasing : ContentView
         Play.IsVisible = false;
         Pause.IsVisible = true;
 
+        _mediaState = MediaState.Playing;
     }
 
     private void Pause_Clicked(object sender, EventArgs e)
@@ -75,6 +91,8 @@ public partial class Phrasing : ContentView
 
         Play.IsVisible = true;
         Pause.IsVisible = false;
+
+        _mediaState = MediaState.Paused;
     }
 
     private void slider_DragStarted(object sender, EventArgs e)
@@ -96,22 +114,11 @@ public partial class Phrasing : ContentView
     private string FormatTime(int minutes, int seconds)
     {
         return $"{minutes:D2}:{seconds:D2}";
+    }
 
-        //string minute = string.Empty;
-        //string second = string.Empty;
-
-        //if (minutes <= 9)
-        //    minute = $"0{minutes}";
-        //else
-        //    minute = minutes.ToString();
-
-        //if (seconds <= 9)
-        //    second = $"0{seconds}";
-        //else
-        //    second = seconds.ToString();
-
-        //return $"{minute}:{second}";
-
+    private void mediaPlayer_MediaEnded(object sender, EventArgs e)
+    {
+        _mediaState = MediaState.Stopped;
     }
 
     #endregion

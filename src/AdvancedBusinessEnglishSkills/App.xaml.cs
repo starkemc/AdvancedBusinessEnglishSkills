@@ -1,4 +1,6 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
+using Syncfusion.Licensing;
+
 
 namespace AdvancedBusinessEnglishSkills
 {
@@ -10,8 +12,10 @@ namespace AdvancedBusinessEnglishSkills
         {
             InitializeComponent();
 
+            SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NMaF5cXmBCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWH1fcnZWQ2ZdU0F2XUQ=");
+
             #if ANDROID
-              CopyDb(fileName);
+             CopyDb(fileName);
             #endif
         }
 

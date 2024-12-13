@@ -1,22 +1,49 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dx="http://schemas.devexpress.com/maui"
              x:Class="AdvancedBusinessEnglishSkills.DetailPage"
              xmlns:custom="clr-namespace:AdvancedBusinessEnglishSkills"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
              Title="Advanced Business English">
-    <dx:TabView>
-        <dx:TabViewItem HeaderText="Listening">
-            <custom:Listen x:Name="listen" ></custom:Listen>
-        </dx:TabViewItem>
-        <dx:TabViewItem HeaderText="Testing">
-            <custom:Quiz x:Name="quiz"></custom:Quiz>
-        </dx:TabViewItem>
-        <dx:TabViewItem HeaderText="Phrasing">
-            <custom:Phrasing x:Name="phrasing"/>
-        </dx:TabViewItem>
-        <dx:TabViewItem HeaderText="Practicing">
-            <custom:Practice x:Name="practice"/>
-        </dx:TabViewItem>
-    </dx:TabView>
+
+
+    <sf:SfTabView x:Name="tabs" SelectionChanged="SfTabView_SelectionChanged">
+        <sf:SfTabView.Items>
+            <sf:SfTabItem x:Name="tabListening" Header="Listening">
+                <sf:SfTabItem.Content>                    
+                </sf:SfTabItem.Content>                
+            </sf:SfTabItem>
+            <sf:SfTabItem x:Name="tabQuiz" Header="Quiz">
+                <sf:SfTabItem.Content>
+                </sf:SfTabItem.Content>                
+            </sf:SfTabItem>
+            <sf:SfTabItem x:Name="tabPhrasing" Header="Phrasing">
+                <sf:SfTabItem.Content>
+                </sf:SfTabItem.Content>
+            </sf:SfTabItem>
+            <sf:SfTabItem x:Name="tabPractice" Header="Pracitce">
+                <sf:SfTabItem.Content>
+                </sf:SfTabItem.Content>
+            </sf:SfTabItem>
+
+        </sf:SfTabView.Items>
+
+     
+        <!--<sf:SfTabItem Header="Testing">
+            <sf:SfTabItem.Content>
+                <custom:Quiz x:Name="quiz"></custom:Quiz>
+            </sf:SfTabItem.Content>
+        </sf:SfTabItem>
+        <sf:SfTabItem Header="Phrasing">
+            <sf:SfTabItem.Content>
+                <custom:Phrasing x:Name="phrasing"/>
+            </sf:SfTabItem.Content>
+        </sf:SfTabItem>
+        <sf:SfTabItem Header="Practicing">
+            <sf:SfTabItem.Content>
+                <custom:Practice x:Name="practice"/>
+            </sf:SfTabItem.Content>
+        </sf:SfTabItem>-->
+    </sf:SfTabView>
+    
 </ContentPage>

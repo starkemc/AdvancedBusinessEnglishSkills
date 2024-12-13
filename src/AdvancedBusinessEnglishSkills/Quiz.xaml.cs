@@ -7,6 +7,22 @@ public partial class Quiz : ContentView
     private int _menuId;
     private QuizViewModel _quizViewModel = new();
 
+    public Quiz(int menuId)
+    {
+        InitializeComponent();
+
+        BindingContext = _quizViewModel;
+
+        _menuId = menuId;
+
+        //OnParentSet();
+    }
+
+    public async Task LoadDataAsync()
+    {
+        await _quizViewModel.LoadData(_menuId);
+    }
+
     public Quiz() 
     {
         InitializeComponent();
@@ -24,14 +40,14 @@ public partial class Quiz : ContentView
 
     }
 
-    protected override async void OnParentSet()
-    {
-        base.OnParentSet();
+    //protected override async void OnParentSet()
+    //{
+    //    base.OnParentSet();
 
-        if (this.Parent != null) // The ContentView is now in the visual tree
-        {
-            await _quizViewModel.LoadData(_menuId);
-        }
+    //    if (this.Parent != null) // The ContentView is now in the visual tree
+    //    {
+    //        await _quizViewModel.LoadData(_menuId);
+    //    }
 
-    }
+    //}
 }

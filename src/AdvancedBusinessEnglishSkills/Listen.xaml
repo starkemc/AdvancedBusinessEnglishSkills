@@ -95,6 +95,7 @@
                  IsVisible="False"
                  x:Name="mediaPlayer"
                  PositionChanged="MediaElement_PositionChanged"
+                 MediaEnded="mediaPlayer_MediaEnded"
                  HeightRequest="200"                
                  ShouldAutoPlay="False"
                  ShouldShowPlaybackControls="True" />
