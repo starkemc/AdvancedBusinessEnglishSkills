@@ -140,3 +140,16 @@ public enum MediaState
     Paused,
     Stopped
 }
+
+public class ListenRowStyle : DataTemplateSelector
+{
+    public DataTemplate EvenRowTemplate { get; set; }
+    public DataTemplate OddRowTemplate { get; set; }
+
+    protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
+    {
+        var listen = item as Models.Listen;               
+
+        return Convert.ToInt32(listen.Id) % 2 == 0 ? EvenRowTemplate : OddRowTemplate;
+    }
+}

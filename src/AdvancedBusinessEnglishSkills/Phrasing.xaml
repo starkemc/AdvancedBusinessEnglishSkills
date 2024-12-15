@@ -7,7 +7,90 @@
 
     <ContentView.Resources>
         <ResourceDictionary>
-            <local:NewlineToFormattedStringConverter x:Key="NewlineToFormattedStringConverter"/>
+
+            <DataTemplate x:Key="EvenRowTemplate">
+                <Grid Padding="10" BackgroundColor="White">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0"
+                            Text="{Binding Name}"
+                            TextDecorations="Underline"
+                            FontSize="16"
+                            FontAttributes="Bold" />
+
+                                    <Label Grid.Row="1"
+                            Grid.Column="1"
+                            FontSize="14" 
+                            Text="{Binding Text}"
+                            LineBreakMode="WordWrap"/>
+
+                                    <Label Grid.Row="2"
+                            Grid.Column="1"
+                            FontSize="14" 
+                            Text="{Binding Text}"
+                            LineBreakMode="WordWrap"/>
+
+                                    <Label Grid.Row="3"
+                            Grid.Column="1"
+                            FontSize="14" 
+                            Text="{Binding Text}"
+                            LineBreakMode="WordWrap"/>
+
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Key="OddRowTemplate">
+                <Grid Padding="10" BackgroundColor="WhiteSmoke">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0"
+                            Text="{Binding Name}"
+                            TextDecorations="Underline"
+                            FontSize="16"
+                            FontAttributes="Bold" />
+
+                                    <Label Grid.Row="1"
+                            Grid.Column="1"
+                            FontSize="14" 
+                            Text="{Binding Text}"
+                            LineBreakMode="WordWrap"/>
+
+                                    <Label Grid.Row="2"
+                            Grid.Column="1"
+                            FontSize="14" 
+                            Text="{Binding Text}"
+                            LineBreakMode="WordWrap"/>
+
+                                    <Label Grid.Row="3"
+                            Grid.Column="1"
+                            FontSize="14" 
+                            Text="{Binding Text}"
+                            LineBreakMode="WordWrap"/>
+
+                </Grid>
+            </DataTemplate>
+
+            <local:PhrasingRowStyle x:Key="PhrasingRowStyleSelector"
+                              EvenRowTemplate="{StaticResource EvenRowTemplate}"
+                              OddRowTemplate="{StaticResource OddRowTemplate}" />
+
         </ResourceDictionary>
     </ContentView.Resources>
 
@@ -18,48 +101,10 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <CollectionView Grid.Row="0" x:Name="collectionView" VerticalScrollBarVisibility="Default">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="10">
+        <CollectionView Grid.Row="0" x:Name="collectionView" 
+                        VerticalScrollBarVisibility="Default"
+                        ItemTemplate="{StaticResource PhrasingRowStyleSelector}">
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-                        <Label Grid.Column="0"
-                               Text="{Binding Name}"
-                               TextDecorations="Underline"
-                               FontSize="16"
-                               FontAttributes="Bold" />
-
-                        <Label Grid.Row="1"
-                               Grid.Column="1"
-                               FontSize="14" 
-                               Text="{Binding Text}"
-                               LineBreakMode="WordWrap"/>
-
-                        <Label Grid.Row="2"
-                               Grid.Column="1"
-                               FontSize="14" 
-                               Text="{Binding Text}"
-                               LineBreakMode="WordWrap"/>
-
-                        <Label Grid.Row="3"
-                               Grid.Column="1"
-                               FontSize="14" 
-                               Text="{Binding Text}"
-                               LineBreakMode="WordWrap"/>
-
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
         </CollectionView>
 
         <StackLayout Grid.Row="1">

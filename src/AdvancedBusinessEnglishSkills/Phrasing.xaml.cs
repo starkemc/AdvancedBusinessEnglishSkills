@@ -147,3 +147,16 @@ public class NewlineToFormattedStringConverter : IValueConverter
         throw new NotImplementedException();
     }
 }
+
+public class PhrasingRowStyle : DataTemplateSelector
+{
+    public DataTemplate EvenRowTemplate { get; set; }
+    public DataTemplate OddRowTemplate { get; set; }
+
+    protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
+    {
+        var phrasing = item as Models.Phrasing;
+
+        return Convert.ToInt32(phrasing.Id) % 2 == 0 ? EvenRowTemplate : OddRowTemplate;
+    }
+}

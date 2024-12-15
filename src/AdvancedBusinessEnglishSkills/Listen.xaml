@@ -2,7 +2,67 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:media="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui.MediaElement"
+             xmlns:local="clr-namespace:AdvancedBusinessEnglishSkills"
              x:Class="AdvancedBusinessEnglishSkills.Listen">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="EvenRowTemplate">
+                <Grid Padding="10" BackgroundColor="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0"
+                             Text="{Binding Name}"
+                             TextDecorations="Underline"
+                             FontSize="16"
+                             FontAttributes="Bold" />
+
+                    <Label Grid.Row="1"
+                         Grid.Column="1"
+                         FontSize="14"
+                         Text="{Binding Text}"	
+                         LineBreakMode="WordWrap"/>
+
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Key="OddRowTemplate">
+                <Grid Padding="10" BackgroundColor="WhiteSmoke">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0"
+                             Text="{Binding Name}"
+                             TextDecorations="Underline"
+                             FontSize="16"
+                             FontAttributes="Bold" />
+
+                    <Label Grid.Row="1"
+                             Grid.Column="1"
+                             FontSize="14"
+                             Text="{Binding Text}"	
+                             LineBreakMode="WordWrap"/>
+
+                </Grid>
+            </DataTemplate>
+
+            <local:ListenRowStyle x:Key="ListenRowStyleSelector"
+                              EvenRowTemplate="{StaticResource EvenRowTemplate}"
+                              OddRowTemplate="{StaticResource OddRowTemplate}" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+
     <Grid Margin="0">
 
         <Grid.RowDefinitions>
@@ -10,34 +70,10 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <CollectionView Grid.Row="0" x:Name="collectionView" VerticalScrollBarVisibility="Default">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="10">
-
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-                        <Label Grid.Column="0"
-                               Text="{Binding Name}"
-                               TextDecorations="Underline"
-                               FontSize="16"
-                               FontAttributes="Bold" />
-
-                        <Label Grid.Row="1"
-                           Grid.Column="1"
-                           FontSize="14"
-                           Text="{Binding Text}"	
-                           LineBreakMode="WordWrap"/>
-
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
+        <CollectionView Grid.Row="0" x:Name="collectionView" 
+                        VerticalScrollBarVisibility="Default"
+                        ItemTemplate="{StaticResource ListenRowStyleSelector}">
+          
         </CollectionView>
 
         <StackLayout Grid.Row="1">
@@ -56,10 +92,10 @@
                 </HorizontalStackLayout>
 
                 <Slider Grid.Row="1" 
-                x:Name="slider"
-                MinimumTrackColor="Grey"
-                DragStarted="slider_DragStarted"
-                DragCompleted="slider_DragCompleted"/>
+                        x:Name="slider"
+                        MinimumTrackColor="Grey"
+                        DragStarted="slider_DragStarted"
+                        DragCompleted="slider_DragCompleted"/>
 
                 <Grid Grid.Row="3">
                     <Grid.RowDefinitions>

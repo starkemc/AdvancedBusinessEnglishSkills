@@ -42,7 +42,7 @@
 	  <AndroidUseAapt2>True</AndroidUseAapt2>
 	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
 	  <ApplicationId>com.advancedbusinessenglishskills</ApplicationId>
-	  <ApplicationDisplayVersion>1.0.3</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.0.4</ApplicationDisplayVersion>
 	  <DebugSymbols>True</DebugSymbols>
 	</PropertyGroup>
 
@@ -51,17 +51,17 @@
 	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
 	  <AndroidPackageFormat>apk</AndroidPackageFormat>
 	  <ApplicationId>com.advancedbusinessenglishskills</ApplicationId>
-	  <ApplicationDisplayVersion>1.0.3</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.0.4</ApplicationDisplayVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-ios|AnyCPU'">
 	  <ApplicationId>com.advancedbusinessenglishskills</ApplicationId>
-	  <ApplicationDisplayVersion>1.0.3</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.0.4</ApplicationDisplayVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-ios|AnyCPU'">
 	  <ApplicationId>com.advancedbusinessenglishskills</ApplicationId>
-	  <ApplicationDisplayVersion>1.0.3</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.0.4</ApplicationDisplayVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -87,7 +87,7 @@
 		<PackageReference Include="DevExpress.Maui.CollectionView" Version="24.1.7" />
 		<PackageReference Include="DevExpress.Maui.Controls" Version="24.1.7" />
 		<PackageReference Include="DevExpress.Maui.Core" Version="24.1.7" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.12" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.21" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
 		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.10" />

@@ -14,6 +14,8 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
 
+        Application.Current.UserAppTheme = AppTheme.Light;
+
         _database = new DBContext();
     }
 
