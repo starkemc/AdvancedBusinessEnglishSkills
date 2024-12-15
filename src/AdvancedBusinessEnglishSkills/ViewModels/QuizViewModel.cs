@@ -90,14 +90,16 @@ public class QuizViewModel : BaseViewModel
         _questions = await _dbContext.Question_GetByMenuId(menuId);
         var answers = await _dbContext.Answers_GetByMenuId(menuId);
 
-        _questions.ForEach(question => 
+        if(_questions.Any())
         {
-            question.Answers = answers.Where(q => q.QuestionId == question.Id).ToList();
-        });
+            _questions.ForEach(question =>
+            {
+                question.Answers = answers.Where(q => q.QuestionId == question.Id).ToList();
+            });
 
-        //set the first question
-        Data.Add(_questions[0]);
-
+            //set the first question
+            Data.Add(_questions[0]);
+        }
     }
 
 

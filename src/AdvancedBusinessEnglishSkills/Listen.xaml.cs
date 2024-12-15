@@ -45,11 +45,14 @@ public partial class Listen : ContentView
         var items = await _database.Listen_GetByMenuId(MenuId);
         var audioFile = await _database.Audio_GetListenByMenuId(MenuId);
 
-        //set audiofile
-        mediaPlayer.Source = MediaSource.FromResource(audioFile.Name);
+        if (audioFile != null && items != null) 
+        {
+            //set audiofile
+            mediaPlayer.Source = MediaSource.FromResource(audioFile.Name);
 
-        //set collectionView
-        collectionView.ItemsSource = items;
+            //set collectionView
+            collectionView.ItemsSource = items;
+        }
     }
 
     public int MenuId { get; set; }

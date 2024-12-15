@@ -21,7 +21,7 @@
                 <sf:SfTabItem.Content>
                 </sf:SfTabItem.Content>
             </sf:SfTabItem>
-            <sf:SfTabItem x:Name="tabPractice" Header="Pracitce">
+            <sf:SfTabItem x:Name="tabPractice" Header="Practice">
                 <sf:SfTabItem.Content>
                 </sf:SfTabItem.Content>
             </sf:SfTabItem>

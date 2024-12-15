@@ -34,6 +34,9 @@ public partial class Phrasing : ContentView
     {
         //load the data from sqlite
         var items = await _database.Phrasing_GetByMenuId(MenuId);
+
+        if (!items.Any()) return;
+
         var audioFile = await _database.Audio_GetPhrasingByMenuId(MenuId);
 
         //set audiofile
@@ -41,6 +44,7 @@ public partial class Phrasing : ContentView
 
         //set collectionView
         collectionView.ItemsSource = items;
+        
     }
 
     public int MenuId { get; set; }

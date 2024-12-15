@@ -29,13 +29,8 @@ public partial class Practice : ContentView
     {
         _practice = await _dbContext.Practice_GetByMenuId(_menuId);
 
-        //_practice.ForEach(async item =>
-        //{
-        //    var details = await _dbContext.PracticeDetail_GetByPracticeId(item.Id);
-
-        //    item.Items.AddRange(details);
-
-        //});
+        if (!_practice.Any())
+            return;
 
         foreach (var item in _practice)
         {
