@@ -12,7 +12,7 @@
                 <Grid Padding="10" BackgroundColor="White">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
+                        <!--<RowDefinition Height="Auto" />-->
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -21,11 +21,17 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Column="0"
+                    <!--<Label Grid.Column="0"
                             Text="{Binding Name}"
                             TextDecorations="Underline"
                             FontSize="16"
-                            FontAttributes="Bold" />
+                            FontAttributes="Bold" />-->
+
+                                    <Label Grid.Row="0"
+                            Grid.Column="1"
+                            FontSize="14" 
+                            Text="{Binding Text}"
+                            LineBreakMode="WordWrap"/>
 
                                     <Label Grid.Row="1"
                             Grid.Column="1"
@@ -34,12 +40,6 @@
                             LineBreakMode="WordWrap"/>
 
                                     <Label Grid.Row="2"
-                            Grid.Column="1"
-                            FontSize="14" 
-                            Text="{Binding Text}"
-                            LineBreakMode="WordWrap"/>
-
-                                    <Label Grid.Row="3"
                             Grid.Column="1"
                             FontSize="14" 
                             Text="{Binding Text}"
@@ -51,7 +51,7 @@
                 <Grid Padding="10" BackgroundColor="WhiteSmoke">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
+                        <!--<RowDefinition Height="Auto" />-->
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -60,11 +60,17 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Column="0"
+                    <!--<Label Grid.Column="0"
                             Text="{Binding Name}"
                             TextDecorations="Underline"
                             FontSize="16"
-                            FontAttributes="Bold" />
+                            FontAttributes="Bold" />-->
+
+                                    <Label Grid.Row="0"
+                            Grid.Column="1"
+                            FontSize="14" 
+                            Text="{Binding Text}"
+                            LineBreakMode="WordWrap"/>
 
                                     <Label Grid.Row="1"
                             Grid.Column="1"
@@ -73,12 +79,6 @@
                             LineBreakMode="WordWrap"/>
 
                                     <Label Grid.Row="2"
-                            Grid.Column="1"
-                            FontSize="14" 
-                            Text="{Binding Text}"
-                            LineBreakMode="WordWrap"/>
-
-                                    <Label Grid.Row="3"
                             Grid.Column="1"
                             FontSize="14" 
                             Text="{Binding Text}"
@@ -97,17 +97,25 @@
     <Grid Margin="0">
 
         <Grid.RowDefinitions>
-            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition></RowDefinition>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <CollectionView Grid.Row="0" x:Name="collectionView" 
+        <Grid Grid.Row="0">
+            <Image Source="quizbackground" HorizontalOptions="FillAndExpand" Aspect="Fill"/>
+            <StackLayout VerticalOptions="Center" Margin="0,10,0,10">
+                <Label Text="Please Repeat Aloud" FontFamily="Univia-Pro" FontSize="20" HorizontalOptions="Center"/>                
+            </StackLayout>
+        </Grid>
+
+        <CollectionView Grid.Row="1" x:Name="collectionView" 
                         VerticalScrollBarVisibility="Default"
                         ItemTemplate="{StaticResource PhrasingRowStyleSelector}">
 
         </CollectionView>
 
-        <StackLayout Grid.Row="1">
+        <StackLayout Grid.Row="2">
             <BoxView HeightRequest=".6" Color="Blue" Margin="0" />
             <Grid>
                 <Grid.RowDefinitions>
