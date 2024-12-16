@@ -50,6 +50,8 @@ public partial class Listen : ContentView
             //set audiofile
             mediaPlayer.Source = MediaSource.FromResource(audioFile.Name);
 
+            items = items.OrderBy(x => x.Id).ToList();
+
             //set collectionView
             collectionView.ItemsSource = items;
         }

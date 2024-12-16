@@ -9,7 +9,7 @@
     <ContentView.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="EvenRowTemplate">
-                <Grid Padding="10" IsEnabled="False" >
+                <Grid Padding="10">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -26,7 +26,7 @@
             </DataTemplate>
 
             <DataTemplate x:Key="OddRowTemplate">
-                <Grid Padding="10" IsEnabled="True">
+                <Grid Padding="10" BackgroundColor="WhiteSmoke">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -38,7 +38,7 @@
                     <Label Grid.Column="0" Text="{Binding Name}" TextDecorations="Underline"
                              FontSize="16" FontAttributes="Bold" />
 
-                    <Label Grid.Row="1" Grid.Column="1" FontSize="14" Text="{Binding Text}"	
+                    <Label Grid.Row="1" Grid.Column="1" FontSize="14" FontAttributes="Bold" Text="{Binding Text}"	
                              LineBreakMode="WordWrap"/>
 
                 </Grid>
