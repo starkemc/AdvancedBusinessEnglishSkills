@@ -8,6 +8,8 @@ public partial class MainPage : ContentPage
 {
     public ObservableCollection<Menu> MenuItems = new();
 
+    private List<Models.Menu> _menus = new();
+
     DBContext _database;
 
     public MainPage()
@@ -25,12 +27,15 @@ public partial class MainPage : ContentPage
 
         MenuItems.Clear();
 
-        var menu = await _database.Menu_GetAllAsync();
+        _menus = await _database.Menu_GetAllAsync();
 
-        menu.ForEach(item => {
+        _menus.ForEach(item => {
 
-            item.Image = item.Icon;
-            MenuItems.Add(item);
+            if (item.TopMenu == 1)
+            {
+                item.Image = item.Icon;
+                MenuItems.Add(item);
+            }            
         });
 
         collectionMenu.ItemsSource = MenuItems;
@@ -38,8 +43,15 @@ public partial class MainPage : ContentPage
 
     public async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
+        //get the menu item
         var menuItem = (e.CurrentSelection.FirstOrDefault() as Models.Menu);
        
-        await Navigation.PushAsync(new DetailPage(menuItem.Id));
+        //determine if its a submenu
+        if(menuItem.TopMenu == 1 && menuItem.SubMenuId == null)
+            await Navigation.PushAsync(new DetailPage(menuItem.Id));
+        else
+        {
+            await Navigation.PushAsync(new SubMenuPage((int)menuItem.SubMenuId, menuItem.Name));
+        }
     }
 }

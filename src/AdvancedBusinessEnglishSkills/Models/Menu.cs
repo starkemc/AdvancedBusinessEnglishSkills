@@ -10,6 +10,9 @@ public class Menu
     public string Name { get; set; }
     public string Description { get; set; }
     public string Icon { get; set; }
+    public int TopMenu { get; set; }
+    public int? SubMenuId { get; set; }
+    public int OrderBy { get; set; }
     public ImageSource Image { get; set; }
    
 }

@@ -28,10 +28,15 @@ public class DBContext
         return await _database.Table<Menu>().Where(i => i.Id == id).FirstOrDefaultAsync();
     }
 
+    public async Task<List<Menu>> Menu_GetBySubMenuIdAsync(int id)
+    {
+        return await _database.Table<Menu>().Where(d => d.SubMenuId == id).ToListAsync();
+    }
+
     #endregion
 
     #region Listen
-    
+
     public async Task<List<Models.Listen>> Listen_GetByMenuId(int id)
     {
         return await _database.Table<Models.Listen>().Where(d => d.MenuId == id).ToListAsync();
