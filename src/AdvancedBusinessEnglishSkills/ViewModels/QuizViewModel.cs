@@ -57,6 +57,8 @@ public class QuizViewModel : BaseViewModel
 
         int numberOfQuestions = _questions.Count;
         int nextQuestion = Convert.ToInt32(questionId);
+        //int nextQuestion = 
+
 
         if (nextQuestion >= numberOfQuestions)
         {
